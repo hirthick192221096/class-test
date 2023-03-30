@@ -1,0 +1,40 @@
+#include <stdio.h>
+
+int main() {
+   int arr[100], n, first_largest, second_largest;
+
+   // Read the number of elements in the array
+   printf("Enter the number of elements in the array: ");
+   scanf("%d", &n);
+
+   // Read the elements of the array
+   printf("Enter the elements of the array: ");
+   for(int i = 0; i < n; i++) {
+      scanf("%d", &arr[i]);
+   }
+
+   // Initialize the first_largest and second_largest variables with the first two elements of the array
+   if(arr[0] > arr[1]) {
+      first_largest = arr[0];
+      second_largest = arr[1];
+   } else {
+      first_largest = arr[1];
+      second_largest = arr[0];
+   }
+
+   // Traverse the remaining elements of the array
+   for(int i = 2; i < n; i++) {
+      if(arr[i] > first_largest) {
+         second_largest = first_largest;
+         first_largest = arr[i];
+      } else if(arr[i] > second_largest && arr[i] != first_largest) {
+         second_largest = arr[i];
+      }
+   }
+
+   // Display the result
+   printf("The FIRST LARGEST = %d\n", first_largest);
+   printf("THE SECOND LARGEST = %d\n", second_largest);
+
+   return 0;
+}
